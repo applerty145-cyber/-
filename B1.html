@@ -4,32 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>添興家具｜詳細作品展示</title>
-    <link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'M PLUS Rounded 1c', sans-serif; background-color: #f5efe6; margin: 0; padding: 20px; -webkit-tap-highlight-color: transparent; overscroll-behavior-y: none; }
+        body { 
+            font-family: 'Ma Shan Zheng', cursive; 
+            background-color: #fafafa;
+            /* 日系藍色網格背景 */
+            background-image: 
+                linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(176, 196, 222, 0.4) 1px, transparent 1px);
+            background-size: 20px 20px;
+            margin: 0; 
+            padding: 20px; 
+            -webkit-tap-highlight-color: transparent; 
+            overscroll-behavior-y: none; 
+        }
         .header-logo { position: absolute; top: 25px; right: 25px; max-width: 120px; }
-        .back-btn { position: absolute; top: 25px; left: 25px; background: #e67e22; color: white; border: none; padding: 10px 20px; border-radius: 50px; cursor: pointer; font-weight: bold; }
-        .section-title { color: #4a3f35; font-size: 1.6rem; text-align: center; margin: 80px 0 40px 0; white-space: nowrap; }
-        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
-        .card { background: #fff; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); cursor: pointer; }
-        .card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; pointer-events: none; }
-        .video-container { max-width: 800px; margin: 50px auto; border-radius: 15px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
         
-        /* 燈箱與圖片優化：改為 height: 100% 解決 iOS Safari 偏下問題 */
+        /* 修改這裡：返回按鈕變為黃色方形便條紙 */
+        .back-btn { 
+            position: absolute; 
+            top: 25px; 
+            left: 25px; 
+            background: #fff9c4; /* 淡黃色便條紙顏色 */
+            color: #333; /* 文字改深色 */
+            border: 1px solid #e0e0e0; /* 淡淡的邊框 */
+            padding: 8px 18px; 
+            border-radius: 0px; /* 取消圓角 */
+            cursor: pointer; 
+            font-size: 1.1rem; /* 字體稍微加大 */
+            font-family: 'Ma Shan Zheng', cursive; /* 按鈕也套用手寫體 */
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.05); /* 加一點點陰影看起來更像貼紙 */
+            transform: rotate(-2deg); /* 微微傾斜更自然 */
+            transition: transform 0.2s;
+        }
+        .back-btn:hover { transform: rotate(0deg) scale(1.05); }
+
+        .section-title { color: #333; font-size: 2rem; text-align: center; margin: 80px 0 40px 0; white-space: nowrap; font-weight: normal; letter-spacing: 2px; }
+        .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; }
+        .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer; padding: 10px; box-sizing: border-box;}
+        .card img { width: 100%; aspect-ratio: 4/3; object-fit: cover; pointer-events: none; border-radius: 2px;}
+        .video-container { max-width: 800px; margin: 50px auto; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.1); padding: 10px; background: #fff;}
+        
+        /* 下方維持原本完美的燈箱腳本，完全不動 */
         #lightbox { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.98); z-index: 99999; justify-content: center; align-items: center; overflow: hidden; touch-action: none; }
         #lightbox-img { max-width: 100vw; max-height: 85vh; object-fit: contain; margin: auto; cursor: grab; transform-origin: center; transition: transform 0.1s ease-out; }
         #lightbox-img:active { cursor: grabbing; }
-        
-        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.3); font-size: 3.5rem; cursor: pointer; user-select: none; padding: 15px; transition: color 0.3s; z-index: 10; }
+        .nav-btn { position: absolute; top: 50%; transform: translateY(-50%); color: rgba(255, 255, 255, 0.3); font-size: 3.5rem; cursor: pointer; user-select: none; padding: 15px; transition: color 0.3s; z-index: 10; font-family: sans-serif; /* 箭頭用基本字體比較好看 */ }
         .nav-btn:hover { color: rgba(255, 255, 255, 0.9); }
         #prev { left: 10px; } 
         #next { right: 10px; }
-        
-        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 2.5rem; cursor: pointer; z-index: 100000; width: 50px; height: 50px; text-align: center; line-height: 50px; font-weight: bold; }
-
+        .close-btn { position: absolute; top: 20px; right: 20px; color: white; font-size: 2.5rem; cursor: pointer; z-index: 100000; width: 50px; height: 50px; text-align: center; line-height: 50px; font-family: sans-serif;}
         .dots-container { position: absolute; bottom: 30px; left: 0; width: 100%; display: flex; justify-content: center; gap: 10px; z-index: 10; }
         .dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(255, 255, 255, 0.4); cursor: pointer; transition: background 0.3s; }
-
         @media (max-width: 767px) { .nav-btn { display: none !important; } }
     </style>
 </head>
@@ -56,9 +83,7 @@
     <div id="lightbox">
         <div class="close-btn" onclick="closeItem(event)">✕</div>
         <span class="nav-btn" id="prev" onclick="changeImage(event, -1)">&#10094;</span>
-        
         <img id="lightbox-img" src="" alt="放大圖" draggable="false">
-        
         <span class="nav-btn" id="next" onclick="changeImage(event, 1)">&#10095;</span>
         <div class="dots-container" id="dots-container"></div>
     </div>
@@ -66,23 +91,11 @@
     <script>
         var images = ["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg"];
         var currentIndex = 0;
-        
-        // 放大與拖曳參數
-        var scale = 1;
-        var translateX = 0, translateY = 0;
-        var lastTranslateX = 0, lastTranslateY = 0;
-        var isDragging = false;
-        var startX, startY;
-        
-        // 手機觸控參數
-        var startDist = 0;
-        var touchStartX = 0, touchStartY = 0;
-        var lastTapTime = 0; // 用於雙擊判斷
-        
-        // 瀏覽器上一頁狀態管理
+        var scale = 1; var translateX = 0, translateY = 0; var lastTranslateX = 0, lastTranslateY = 0;
+        var isDragging = false; var startX, startY;
+        var startDist = 0; var touchStartX = 0, touchStartY = 0; var lastTapTime = 0; 
         var isLightboxOpen = false;
 
-        // 初始化下方圓點
         var dotsContainer = document.getElementById('dots-container');
         images.forEach((_, i) => {
             let dot = document.createElement('div');
@@ -98,65 +111,36 @@
             });
         }
 
-        function applyTransform() {
-            document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`;
-        }
-
-        function resetZoom() {
-            scale = 1; translateX = 0; translateY = 0; lastTranslateX = 0; lastTranslateY = 0;
-            applyTransform();
-        }
+        function applyTransform() { document.getElementById('lightbox-img').style.transform = `translate(${translateX}px, ${translateY}px) scale(${scale})`; }
+        function resetZoom() { scale = 1; translateX = 0; translateY = 0; lastTranslateX = 0; lastTranslateY = 0; applyTransform(); }
 
         function openItem(e, index) {
             if(e) { e.preventDefault(); e.stopPropagation(); }
-            currentIndex = index;
-            resetZoom();
+            currentIndex = index; resetZoom();
             document.getElementById('lightbox-img').src = images[currentIndex];
             document.getElementById('lightbox').style.display = 'flex';
             document.getElementById('my-video-box').style.visibility = 'hidden';
             updateDots();
-            
-            // 寫入 History API，支援手機原生返回鍵
-            if (!isLightboxOpen) {
-                history.pushState({ lightbox: true }, "");
-                isLightboxOpen = true;
-            }
+            if (!isLightboxOpen) { history.pushState({ lightbox: true }, ""); isLightboxOpen = true; }
         }
         
         function closeItem(e, fromPopState = false) {
             if(e) { e.preventDefault(); e.stopPropagation(); }
             document.getElementById('lightbox').style.display = 'none';
             document.getElementById('my-video-box').style.visibility = 'visible';
-            
-            // 如果是按 ✕ 關閉的，主動清除上一頁歷史紀錄
-            if (isLightboxOpen && !fromPopState) {
-                isLightboxOpen = false;
-                history.back();
-            } else {
-                isLightboxOpen = false;
-            }
+            if (isLightboxOpen && !fromPopState) { isLightboxOpen = false; history.back(); } else { isLightboxOpen = false; }
         }
 
-        // 監聽手機返回鍵動作
-        window.addEventListener('popstate', (e) => {
-            if (isLightboxOpen) {
-                closeItem(null, true);
-            }
-        });
+        window.addEventListener('popstate', (e) => { if (isLightboxOpen) { closeItem(null, true); } });
 
         function changeImage(e, step) {
             if(e) { e.preventDefault(); e.stopPropagation(); }
             currentIndex = (currentIndex + step + images.length) % images.length;
             document.getElementById('lightbox-img').src = images[currentIndex];
-            resetZoom();
-            updateDots();
+            resetZoom(); updateDots();
         }
 
-        // ==========================================
-        // 【網頁版】維持原樣完全不動
-        // ==========================================
         const lightboxBox = document.getElementById('lightbox');
-        
         lightboxBox.addEventListener('wheel', (e) => {
             if(document.getElementById('lightbox').style.display === 'flex') {
                 e.preventDefault();
@@ -168,10 +152,7 @@
         }, {passive: false});
 
         lightboxBox.addEventListener('mousedown', (e) => {
-            if (scale > 1) {
-                isDragging = true;
-                startX = e.clientX; startY = e.clientY;
-            }
+            if (scale > 1) { isDragging = true; startX = e.clientX; startY = e.clientY; }
         });
         lightboxBox.addEventListener('mousemove', (e) => {
             if (isDragging && scale > 1) {
@@ -180,22 +161,13 @@
                 applyTransform();
             }
         });
-        lightboxBox.addEventListener('mouseup', () => {
-            if (isDragging) { isDragging = false; lastTranslateX = translateX; lastTranslateY = translateY; }
-        });
+        lightboxBox.addEventListener('mouseup', () => { if (isDragging) { isDragging = false; lastTranslateX = translateX; lastTranslateY = translateY; } });
         lightboxBox.addEventListener('mouseleave', () => { isDragging = false; });
 
-        // ==========================================
-        // 【手機版】雙指縮放、單指防溢出拖曳、雙擊、左右滑
-        // ==========================================
         lightboxBox.addEventListener('touchstart', (e) => {
             if (e.touches.length === 1) {
-                touchStartX = e.touches[0].clientX;
-                touchStartY = e.touches[0].clientY;
-                if (scale > 1) {
-                    isDragging = true;
-                    startX = e.touches[0].clientX; startY = e.touches[0].clientY;
-                }
+                touchStartX = e.touches[0].clientX; touchStartY = e.touches[0].clientY;
+                if (scale > 1) { isDragging = true; startX = e.touches[0].clientX; startY = e.touches[0].clientY; }
             } else if (e.touches.length === 2) {
                 startDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
             }
@@ -204,17 +176,13 @@
         lightboxBox.addEventListener('touchmove', (e) => {
             if(document.getElementById('lightbox').style.display !== 'flex') return;
             e.preventDefault(); 
-            
             if (e.touches.length === 1 && isDragging && scale > 1) {
                 translateX = lastTranslateX + (e.touches[0].clientX - startX);
                 translateY = lastTranslateY + (e.touches[0].clientY - startY);
-                
-                // 【新增：防溢出計算】限制拖曳範圍，不讓圖片跑出畫面
                 let maxTx = (window.innerWidth * scale - window.innerWidth) / 2;
                 let maxTy = (window.innerHeight * scale - window.innerHeight) / 2;
                 translateX = Math.max(-maxTx, Math.min(maxTx, translateX));
                 translateY = Math.max(-maxTy, Math.min(maxTy, translateY));
-                
                 applyTransform();
             } else if (e.touches.length === 2) {
                 let dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
@@ -227,35 +195,19 @@
         }, {passive: false});
 
         lightboxBox.addEventListener('touchend', (e) => {
-            if (isDragging) {
-                isDragging = false;
-                lastTranslateX = translateX;
-                lastTranslateY = translateY;
-            }
-            
-            // 計算這次觸控點擊有沒有移動 (用來區分是滑動還是點擊)
+            if (isDragging) { isDragging = false; lastTranslateX = translateX; lastTranslateY = translateY; }
             let touchEndX = e.changedTouches[0].clientX;
             let touchEndY = e.changedTouches[0].clientY;
             let moveDist = Math.hypot(touchEndX - touchStartX, touchEndY - touchStartY);
-            
             let currentTime = new Date().getTime();
             let tapLength = currentTime - lastTapTime;
             
-            // 【新增：雙擊偵測】0.3秒內連續點兩下，且沒有大範圍滑動
             if (tapLength < 300 && tapLength > 0 && moveDist < 10 && e.changedTouches.length === 1) {
-                resetZoom();
-                e.preventDefault();
-            } 
-            // 如果沒放大，且滑動距離超過 50px 就切換照片
-            else if (e.changedTouches.length === 1 && scale === 1) {
+                resetZoom(); e.preventDefault();
+            } else if (e.changedTouches.length === 1 && scale === 1) {
                 let diff = touchStartX - touchEndX;
-                if (diff > 50) {
-                    changeImage(null, 1);
-                } else if (diff < -50) {
-                    changeImage(null, -1);
-                }
+                if (diff > 50) { changeImage(null, 1); } else if (diff < -50) { changeImage(null, -1); }
             }
-            
             lastTapTime = currentTime;
         });
     </script>
