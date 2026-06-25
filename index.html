@@ -4,11 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>添興家具｜架高床歷年作品集</title>
-    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&display=swap" rel="stylesheet">
     <style>
+        /* 載入您上傳的日系手寫字體 */
+        @font-face {
+            font-family: 'CheckpointFont';
+            src: url('checkpoint.ttf') format('truetype');
+            font-display: swap;
+        }
+
         body { 
-            font-family: 'Ma Shan Zheng', cursive; /* 全局套用手寫字體 */
-            background-color: #fafafa; /* 白底 */
+            font-family: 'CheckpointFont', sans-serif; /* 換成新字體 */
+            background-color: #fafafa; 
             /* 日系藍色網格背景 */
             background-image: 
                 linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
@@ -27,11 +33,21 @@
         }
         .main-title { 
             color: #333; 
-            font-size: 2.5rem; /* 字體稍微加大配合手寫風格 */
+            font-size: 2.5rem; 
             text-align: center; 
             margin: 30px 0 40px 0; 
             letter-spacing: 2px;
+            white-space: nowrap; /* 強制絕對不換行 */
         }
+
+        /* 【行動裝置修正】防標題擠到第二行 */
+        @media (max-width: 767px) {
+            .main-title {
+                font-size: 1.6rem; /* 手機版自動縮小字體，完美塞在同一行 */
+                letter-spacing: 1px;
+            }
+        }
+
         .gallery-container {
             display: flex;
             justify-content: center;
@@ -39,20 +55,20 @@
         }
         .card { 
             background: #fff; 
-            border-radius: 10px; /* 電腦版微調圓角，讓它有點像貼上去的照片 */
+            border-radius: 10px; 
             overflow: hidden; 
             box-shadow: 0 6px 15px rgba(0,0,0,0.08); 
             cursor: pointer; 
             text-decoration: none;
             display: block;
-            max-width: 600px; /* [修改] 將原本的 400px 放大到 600px，讓電腦版縮圖變大 */
+            max-width: 600px; 
             width: 100%;
             transition: transform 0.2s;
-            padding: 10px; /* 給照片留白邊，像拍立得 */
+            padding: 10px; 
             box-sizing: border-box;
         }
         .card:hover {
-            transform: translateY(-5px) rotate(-1deg); /* 懸浮時稍微傾斜一點點 */
+            transform: translateY(-5px) rotate(-1deg); 
         }
         .card img { 
             width: 100%; 
@@ -65,7 +81,7 @@
             color: #333;
             text-align: center;
             font-size: 1.5rem;
-            font-weight: normal; /* 手寫體通常不加粗才好看 */
+            font-weight: normal; 
             padding: 15px 10px 5px 10px;
             margin: 0;
         }
@@ -80,7 +96,7 @@
     <h1 class="main-title">架高床歷年作品集</h1>
 
     <div class="gallery-container">
-        <a href="B1.html?v=2" class="card">
+        <a href="B1.html?v=3" class="card">
             <img src="1.jpg" alt="客製架高床預覽圖">
             <h2 class="card-title">2025/10 客製架高床</h2>
         </a>
