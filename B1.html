@@ -11,7 +11,6 @@
             font-display: swap;
         }
 
-        /* [修改] 讓 html 和 body 滿版，並啟用 flex 垂直佈局 */
         html, body {
             height: 100%;
             margin: 0;
@@ -20,6 +19,7 @@
 
         body { 
             font-family: 'CheckpointFont', sans-serif; 
+            color: #4a3c31; /* [修改] 全站主要字體改為深褐色 */
             background-color: #fafafa;
             background-image: 
                 linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
@@ -34,7 +34,6 @@
             box-sizing: border-box;
         }
 
-        /* [修改] 建立一個主要內容包裹區，自動推開頁尾 */
         .main-content {
             flex: 1 0 auto;
         }
@@ -68,7 +67,7 @@
             top: 55px; 
             left: 25px; 
             background: #fff9c4; 
-            color: #333; 
+            color: #4a3c31; /* [修改] 返回按鈕字體改為深褐色 */
             border: 1px solid #e0e0e0; 
             padding: 8px 18px; 
             border-radius: 0px; 
@@ -82,7 +81,16 @@
         }
         .back-btn:hover { transform: rotate(0deg) scale(1.05); }
 
-        .section-title { color: #333; font-size: 2rem; text-align: center; margin: 110px 0 40px 0; white-space: nowrap; font-weight: normal; letter-spacing: 2px; }
+        /* [修改] 標題字體顏色改為深褐色，字距設定為 2px（與首頁完全相同） */
+        .section-title { 
+            color: #4a3c31; 
+            font-size: 2rem; 
+            text-align: center; 
+            margin: 110px 0 40px 0; 
+            white-space: nowrap; 
+            font-weight: normal; 
+            letter-spacing: 2px; /* 字距同步為 2px */
+        }
         
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
         .card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); cursor: pointer; padding: 10px; box-sizing: border-box;}
