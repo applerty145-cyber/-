@@ -11,6 +11,13 @@
             font-display: swap;
         }
 
+        /* [修改] 讓 html 和 body 滿版，並啟用 flex 垂直佈局 */
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
         body { 
             font-family: 'CheckpointFont', sans-serif; 
             background-color: #fafafa; 
@@ -18,24 +25,31 @@
                 linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(176, 196, 222, 0.4) 1px, transparent 1px);
             background-size: 20px 20px;
-            /* [修改] margin 改為 0，這樣頁首頁尾才能完美貼齊兩邊不留白邊 */
-            margin: 0; 
-            padding: 0 0 40px 0; /* 底部留空間給頁尾 */
             -webkit-tap-highlight-color: transparent; 
+            
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* 確保內容不夠時，body 至少跟螢幕一樣高 */
+            box-sizing: border-box;
+        }
+
+        /* [修改] 建立一個主要內容包裹區，自動推開頁尾 */
+        .main-content {
+            flex: 1 0 auto;
         }
 
         /* 頁首與頁尾的深藍色紙質感樣式 */
         .site-header-bar, .site-footer-bar {
             width: 100%;
-            height: 35px; /* 可以依喜好調整色塊粗細 */
-            background-color: #1e3d6b; /* 深藍色底層 */
-            /* 疊加和紙質感的微細針孔與纖維紋理 */
+            height: 35px; 
+            background-color: #1e3d6b; 
             background-image: 
                 radial-gradient(rgba(255,255,255,0.15) 1px, transparent 0),
                 radial-gradient(rgba(0,0,0,0.1) 1px, transparent 0);
             background-size: 4px 4px;
             background-position: 0 0, 2px 2px;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2); /* 讓紙張邊緣有一點內陰影立體感 */
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.2); 
+            flex-shrink: 0; /* 防止色塊被擠壓變形 */
         }
         
         .site-header-bar {
@@ -43,7 +57,7 @@
         }
 
         .site-footer-bar {
-            margin-top: 60px;
+            margin-top: 60px; /* 與上方內容保持舒適間距 */
         }
 
         .header {
@@ -72,7 +86,7 @@
         .gallery-container {
             display: flex;
             justify-content: center;
-            padding: 0 20px; /* 給左右留一點間距 */
+            padding: 0 20px; 
         }
         .card { 
             background: #fff; 
@@ -110,24 +124,23 @@
 </head>
 <body>
 
-    <!-- 頂端深藍色紙質色塊 -->
-    <div class="site-header-bar"></div>
+    <div class="main-content">
+        <div class="site-header-bar"></div>
 
-    <div class="header">
-        <img src="0-logo-02.png" alt="添興家具" class="header-logo">
+        <div class="header">
+            <img src="0-logo-02.png" alt="添興家具" class="header-logo">
+        </div>
+
+        <h1 class="main-title">架高床歷年作品集</h1>
+
+        <div class="gallery-container">
+            <a href="B1.html?v=5" class="card">
+                <img src="1.jpg" alt="客製架高床預覽圖">
+                <h2 class="card-title">2025/10 客製架高床</h2>
+            </a>
+        </div>
     </div>
 
-    <h1 class="main-title">架高床歷年作品集</h1>
-
-    <div class="gallery-container">
-        <!-- 快取破壞版本號更新到 v=4 -->
-        <a href="B1.html?v=4" class="card">
-            <img src="1.jpg" alt="客製架高床預覽圖">
-            <h2 class="card-title">2025/10 客製架高床</h2>
-        </a>
-    </div>
-
-    <!-- 尾端深藍色紙質色塊 -->
     <div class="site-footer-bar"></div>
 
 </body>
