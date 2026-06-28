@@ -19,7 +19,7 @@
 
         body { 
             font-family: 'CheckpointFont', sans-serif; 
-            color: #4a3c31; /* [修改] 全站主要字體改為深褐色 */
+            color: #4a3c31; 
             background-color: #fafafa;
             background-image: 
                 linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
@@ -67,7 +67,7 @@
             top: 55px; 
             left: 25px; 
             background: #fff9c4; 
-            color: #4a3c31; /* [修改] 返回按鈕字體改為深褐色 */
+            color: #4a3c31; 
             border: 1px solid #e0e0e0; 
             padding: 8px 18px; 
             border-radius: 0px; 
@@ -78,18 +78,18 @@
             transform: rotate(-2deg); 
             transition: transform 0.2s;
             z-index: 5; 
+            font-weight: normal; /* [修改] 確保按鈕文字也保持正常粗細 */
         }
         .back-btn:hover { transform: rotate(0deg) scale(1.05); }
 
-        /* [修改] 標題字體顏色改為深褐色，字距設定為 2px（與首頁完全相同） */
         .section-title { 
             color: #4a3c31; 
             font-size: 2rem; 
             text-align: center; 
             margin: 110px 0 40px 0; 
             white-space: nowrap; 
-            font-weight: normal; 
-            letter-spacing: 2px; /* 字距同步為 2px */
+            letter-spacing: 2px; 
+            font-weight: normal; /* [修改] 移除瀏覽器預設粗體，保持原字體優雅細線 */
         }
         
         .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; max-width: 1000px; margin: 0 auto; padding: 0 20px; box-sizing: border-box; }
