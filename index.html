@@ -19,7 +19,7 @@
 
         body { 
             font-family: 'CheckpointFont', sans-serif; 
-            color: #4a3c31; /* [修改] 全站主要字體改為深褐色 */
+            color: #4a3c31; 
             background-color: #fafafa; 
             background-image: 
                 linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
@@ -66,13 +66,15 @@
         .header-logo { 
             max-width: 180px; 
         }
+        
         .main-title { 
-            color: #4a3c31; /* [修改] 大標題改為深褐色 */
+            color: #4a3c31; 
             font-size: 2.5rem; 
             text-align: center; 
             margin: 30px 0 40px 0; 
-            letter-spacing: 2px; /* 字距保持 2px */
+            letter-spacing: 2px; 
             white-space: nowrap; 
+            font-weight: normal; /* [修改] 移除瀏覽器預設粗體，還原字體細緻感 */
         }
 
         @media (max-width: 767px) {
@@ -111,13 +113,14 @@
             display: block;
             border-radius: 4px;
         }
+        
         .card-title {
-            color: #4a3c31; /* [修改] 卡片標題改為深褐色 */
+            color: #4a3c31; 
             text-align: center;
             font-size: 1.5rem;
-            font-weight: normal; 
-            padding: 15px 10px 5px 10px;
             margin: 0;
+            padding: 15px 10px 5px 10px;
+            font-weight: normal; /* [修改] 移除瀏覽器預設粗體 */
         }
     </style>
 </head>
@@ -133,7 +136,7 @@
         <h1 class="main-title">架高床歷年作品集</h1>
 
         <div class="gallery-container">
-            <a href="B1.html?v=6" class="card">
+            <a href="B1.html?v=7" class="card">
                 <img src="1.jpg" alt="客製架高床預覽圖">
                 <h2 class="card-title">2025/10 客製架高床</h2>
             </a>
