@@ -111,10 +111,10 @@
             gap: 30px;
             padding: 0 20px 40px 20px; 
         }
-      .card { 
-            position: relative; /* 確保內部的白框能對齊這張卡片 */
-            background: #3a5d88; /* ⭐ 已更換為沉穩的日系深藍色 ⭐ */
-            border-radius: 10px; 
+     .card { 
+            background: #ffffff; /* 1. 卡片底色改為全白，這會自然形成白框與文字的白底 */
+            border: 10px solid #28466c; /* 2. 畫出 10px 粗的深藍色外框 */
+            border-radius: 12px; /* 外層圓角稍微調大，讓粗框的邊緣滑順 */
             overflow: hidden; 
             box-shadow: 0 6px 15px rgba(0,0,0,0.08); 
             cursor: pointer; 
@@ -123,22 +123,8 @@
             max-width: 600px; 
             width: 100%;
             transition: transform 0.2s;
-            padding: 5px; /* 外圈藍色框框厚度固定為 10px */
+            padding: 10px; /* 3. 留出 10px 的留白，自動形成跟藍框一樣粗的白框！ */
             box-sizing: border-box;
-        }
-
-        /* ⭐ 調整後的白框：完美貼緊最內側 ⭐ */
-        .card::before {
-            content: "";
-            position: absolute;
-            top: 9px;    /* 往內推到 9px 處，加上 1px 線寬，剛好緊貼內層圖片與文字 */
-            bottom: 9px; 
-            left: 9px;   
-            right: 9px;  
-            border: 1px solid #ffffff; /* 1px 白色細線 */
-            border-radius: 5px; /* 微調圓角，讓它完美包覆內層 */
-            pointer-events: none; /* 讓滑鼠點擊穿透 */
-            z-index: 3; /* 提高層級，確保白線能完美貼在圖片與白底的交界處 */
         }
 
         .card:hover {
@@ -150,22 +136,16 @@
             aspect-ratio: 4/3; 
             object-fit: cover; 
             display: block;
-            border-radius: 4px 4px 0 0; 
-            position: relative;
-            z-index: 2; 
+            border-radius: 4px; /* 讓圖片四角都有一點微圓弧，在粗白框裡看起來更像精緻的相片 */
         }
         
         .card-title {
-            background-color: #ffffff; /* 文字維持白底 */
-            border-radius: 0 0 4px 4px; 
             color: #4a3c31; 
             text-align: center;
             font-size: 1.5rem;
             margin: 0;
-            padding: 15px 10px 15px 10px; 
+            padding: 15px 10px 5px 10px; /* 微調文字的下方留白，讓視覺置中 */
             font-weight: normal; 
-            position: relative;
-            z-index: 2; 
         }
     </style>
 </head>
