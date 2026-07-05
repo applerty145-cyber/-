@@ -58,19 +58,30 @@
             margin-top: 60px;
         }
 
-        .header {
-            text-align: center;
-            margin-top: 20px;
-        }
+        /* 修改後的 Logo 樣式：右上角絕對定位 */
         .header-logo { 
-            max-width: 180px; 
+            position: absolute; 
+            top: 55px; 
+            right: 25px; 
+            max-width: 120px; 
+            z-index: 5;
+        }
+
+        /* 新增的開頭字卡樣式 */
+        .hero-banner {
+            display: block;
+            width: 90%;
+            max-width: 600px;
+            margin: 110px auto 20px auto; /* 留出上方空間，避免被 Logo 遮擋 */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
         }
         
         .main-title { 
             color: #4a3c31; 
             font-size: 2.5rem; 
             text-align: center; 
-            margin: 30px 0 40px 0; 
+            margin: 20px 0 40px 0; 
             letter-spacing: 2px; 
             white-space: nowrap; 
             font-weight: normal; 
@@ -80,6 +91,16 @@
             .main-title {
                 font-size: 1.6rem; 
                 letter-spacing: 1px;
+                margin: 15px 0 30px 0;
+            }
+            /* 手機版的 Logo 與字卡微調 */
+            .hero-banner {
+                margin: 100px auto 15px auto; 
+            }
+            .header-logo {
+                max-width: 100px; 
+                top: 50px;
+                right: 15px;
             }
         }
 
@@ -130,35 +151,31 @@
     <div class="main-content">
         <div class="site-header-bar"></div>
 
-        <div class="header">
-            <img src="0-logo-02.png" alt="添興家具" class="header-logo">
-        </div>
+        <img src="0-logo-02.png" alt="添興家具" class="header-logo">
+
+        <img src="0-開頭字卡.png" alt="開頭字卡" class="hero-banner">
 
         <h1 class="main-title">架高床歷年作品集</h1>
 
         <div class="gallery-container">
-            <!-- 第一個商品：B1 -->
             <a href="B1.html" class="card">
                 <img src="6.webp" alt="客製架高床預覽圖">
                 <h2 class="card-title">2025/10 客製雙層床</h2>
             </a>
 
-            <!-- 第二個商品：B7 -->
             <a href="B7.html" class="card">
                 <img src="7.webp" alt="客製架高床預覽圖">
                 <h2 class="card-title">2026/4 客製書桌櫃架高床</h2>
             </a>
 
-            <!-- 第三個商品：B11 (新增) -->
             <a href="B11.html" class="card">
                 <img src="13.webp" alt="客製架高床預覽圖">
                 <h2 class="card-title">2026/6 客製城堡架高床</h2>
             </a>
             
-
             <a href="B16.html" class="card">
                 <img src="16.webp" alt="客製架高床預覽圖">
-            <h2 class="card-title">2026/6 客製收納衣櫃架高床</h2>
+                <h2 class="card-title">2026/6 客製收納衣櫃架高床</h2>
             </a>
         </div>
     </div>
