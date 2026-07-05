@@ -111,8 +111,8 @@
             gap: 30px;
             padding: 0 20px 40px 20px; 
         }
-        .card { 
-            background: #fff; 
+       .card { 
+            background: #1e3d6b; /* 1. 把卡片的底色(最外圈框框)改成橫幅的藍色 */
             border-radius: 10px; 
             overflow: hidden; 
             box-shadow: 0 6px 15px rgba(0,0,0,0.08); 
@@ -125,23 +125,27 @@
             padding: 10px; 
             box-sizing: border-box;
         }
+
         .card:hover {
             transform: translateY(-5px) rotate(-1deg); 
         }
+
         .card img { 
             width: 100%; 
             aspect-ratio: 4/3; 
             object-fit: cover; 
             display: block;
-            border-radius: 4px;
+            border-radius: 4px 4px 0 0; /* 2. 讓圖片只保留上方圓角，下方變成直角與文字區塊接合 */
         }
         
         .card-title {
+            background-color: #ffffff; /* 3. 幫文字區塊單獨加上白底 */
+            border-radius: 0 0 4px 4px; /* 4. 幫白底加上下方圓角，呼應圖片 */
             color: #4a3c31; 
             text-align: center;
             font-size: 1.5rem;
             margin: 0;
-            padding: 15px 10px 5px 10px;
+            padding: 15px 10px 15px 10px; /* 微調了下方的間距，讓白底的上下留白比較均勻 */
             font-weight: normal; 
         }
     </style>
