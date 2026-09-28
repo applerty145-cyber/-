@@ -20,17 +20,57 @@
         body { 
             font-family: 'CheckpointFont', sans-serif; 
             color: #4a3c31; 
-            background-color: #fafafa; 
-            background-image: 
-                linear-gradient(rgba(176, 196, 222, 0.4) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(176, 196, 222, 0.4) 1px, transparent 1px);
-            background-size: 20px 20px;
             -webkit-tap-highlight-color: transparent; 
             
             display: flex;
             flex-direction: column;
             min-height: 100vh;
             box-sizing: border-box;
+        }
+
+        /* 1. 柔和的天空藍與灰白漸層色彩層 */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2; 
+            background-color: #f2f5f9; /* 乾淨的灰白底色 */
+            background-image: 
+                /* 右側中上：較明顯的藍色雲霧 */
+                radial-gradient(circle at 65% 35%, rgba(135, 185, 255, 0.55) 0%, rgba(135, 185, 255, 0.1) 45%, transparent 65%),
+                
+                /* 左下側：延伸的淡藍色 */
+                radial-gradient(circle at 30% 85%, rgba(175, 215, 255, 0.5) 0%, transparent 60%),
+                
+                /* 左上側：邊緣淡淡的透藍 */
+                radial-gradient(circle at 10% 20%, rgba(190, 225, 255, 0.4) 0%, transparent 55%),
+                
+                /* 中央高光：用一點白色讓藍色過渡更通透 */
+                radial-gradient(circle at 45% 55%, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+        }
+
+        /* 2. 底片顆粒感（噪點）層 */
+        body::after {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1; 
+            pointer-events: none; /* 重要：確保這層不會擋到滑鼠點擊網頁元素 */
+            
+            /* 利用內嵌的 SVG 產生隨機噪點紋理 */
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            
+            /* 控制噪點的明顯程度，可根據喜好微調 (例如 0.15~0.4) */
+            opacity: 0.25; 
+            
+            /* 混合模式：讓黑白噪點能與底下的藍色漸層自然疊加融合 */
+            mix-blend-mode: overlay;
         }
 
         .main-content {
